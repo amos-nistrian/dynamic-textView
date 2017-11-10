@@ -47,7 +47,7 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 		
 		if let header = view as? UITableViewHeaderFooterView {
 			header.textLabel?.textColor = UIColor.black
-			header.backgroundView?.backgroundColor  = UIColor.darkGray.withAlphaComponent(0.15)
+			header.backgroundView?.backgroundColor  = UIColor.red.withAlphaComponent(0.15)
 		}
 	}
 	
