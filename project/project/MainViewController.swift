@@ -30,10 +30,6 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 		self.tableView.separatorStyle = .none // remove lines between cells
 		self.tableView.allowsSelection = false // remove highlighting when selecting a cell
 		
-		// change header colors
-		self.navigationController?.navigationBar.barTintColor = UIColor.white
-		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: redColor]
-		
 	}
 	
 	
@@ -50,8 +46,8 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 	override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 		
 		if let header = view as? UITableViewHeaderFooterView {
-			header.textLabel?.textColor = UIColor.white
-			header.backgroundView?.backgroundColor  = redColor.withAlphaComponent(0.85)
+			header.textLabel?.textColor = UIColor.black
+			header.backgroundView?.backgroundColor  = UIColor.darkGray.withAlphaComponent(0.15)
 		}
 	}
 	
