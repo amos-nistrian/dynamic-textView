@@ -101,7 +101,6 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 				cell.delegate = self as ExpandingCellDelegate
 				
 				cell.cellIndexPath = indexPath
-				print("index path is ",indexPath)
 				print(cell.textView)
 				cell.textView.text = ingredients[row-1]
 				
@@ -115,8 +114,6 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 				cell.delegate = self as ButtonCellDelegate
 				
 				cell.button.setTitle("+ Step     ", for: .normal)
-
-
 				cell.btnInSection = section
 				cell.button.tag = 1
 				
@@ -125,11 +122,10 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 				
 				let cell = tableView.dequeueReusableCell(withIdentifier: "Text View Cell", for: indexPath) as! TextViewCell
 				
-				
+				cell.delegate = self as ExpandingCellDelegate
+
 				cell.textView.text = steps[row-1]
 				cell.cellIndexPath = indexPath
-				cell.delegate = self as ExpandingCellDelegate
-				//cell.delegate = self
 				return cell
 			}
 			
@@ -140,31 +136,23 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 	}
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// Adds a new cell to the table and data source
 	func shouldAddCellInSection(section: Int) {
-		
+
 		// Update the data source
 		if (section == 0) {
 			ingredients.append("")
 		} else {
 			steps.append("")
 		}
-		
+
 		let row = tableView.numberOfRows(inSection: section)
-		print(row)
-		print(section)
-		
-		UIView.setAnimationsEnabled(false)
-		
+
 
 		let indexPath = IndexPath(row: row, section: section)
-		
-		tableView.beginUpdates()
-		self.tableView.insertRows(at: [indexPath], with: .none)
-		tableView.endUpdates()
-		
-		UIView.setAnimationsEnabled(true)
-		
+
+		tableView.reloadData()
+		tableView.layoutIfNeeded()
+
 		tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
 	}
 	

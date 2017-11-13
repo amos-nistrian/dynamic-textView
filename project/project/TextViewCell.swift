@@ -76,4 +76,4 @@ class TextViewCell: UITableViewCell, UITextViewDelegate {
 		self.delegate.updateArray(self.cellIndexPath, text: textView.text)
 	}
 	
-}
+} // EOC
