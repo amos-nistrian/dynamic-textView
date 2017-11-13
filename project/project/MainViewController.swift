@@ -18,6 +18,10 @@ protocol ExpandingCellDelegate: class {
 }
 
 class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCellDelegate {
+	
+	let greyTextColor = UIColor(red:0.47, green:0.47, blue:0.44, alpha:1.0)
+	let lightGreyBackgroundColor =  UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0)
+	let darkerGreyBackgroundColor = UIColor(red:0.77, green:0.77, blue:0.77, alpha:1.0)
 
 	var steps = [String]()
 	var ingredients = [String]()
@@ -101,8 +105,11 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 				cell.delegate = self as ExpandingCellDelegate
 				
 				cell.cellIndexPath = indexPath
-				print(cell.textView)
 				cell.textView.text = ingredients[row-1]
+				
+				if !(ingredients[row-1].isEmpty) {
+					cell.textView.backgroundColor = lightGreyBackgroundColor
+				}
 				
 				return cell
 			}
@@ -124,8 +131,13 @@ class MainViewController: UITableViewController, ExpandingCellDelegate, ButtonCe
 				
 				cell.delegate = self as ExpandingCellDelegate
 
-				cell.textView.text = steps[row-1]
 				cell.cellIndexPath = indexPath
+				cell.textView.text = steps[row-1]
+				
+				if !(steps[row-1].isEmpty) {
+					cell.textView.backgroundColor = lightGreyBackgroundColor
+				}
+				
 				return cell
 			}
 			
